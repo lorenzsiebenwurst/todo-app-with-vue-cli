@@ -5,24 +5,31 @@
 }
 
 html {
-  font-size: 16px;
+  font-size: 20px;
   font-family: monospace;
+  --dark-blue: #073b4c;
+  --light-blue: #118ab2;
+  --green: #06d6a0;
+  --yellow: #f5ab00;
+  --pink: #ef476f;
 }
 body {
   margin: 0;
 }
+
 header {
   padding: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: var(--pink);
+  color: white;
+}
+.header-title {
+  text-shadow: 2px 2px var(--light-blue), 4px 4px var(--yellow);
 }
 header > * {
   margin: 0.5rem;
-}
-
-button {
-  cursor: pointer;
 }
 
 main {
@@ -30,20 +37,88 @@ main {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding: 2rem;
 }
 
-#removeDoneTodos {
-  margin: 2rem;
+.button {
+  all: unset;
+  word-break: keep-all;
+  word-wrap: normal;
+  color: white;
+  background-color: var(--light-blue);
+  padding: 0.25em 0.4em;
+  border-radius: 0.3em;
+  border: 0.1em solid transparent;
+  box-shadow: 3px 3px 0px var(--pink);
+}
+.button:focus {
+  border: 0.1em solid var(--yellow);
 }
 
-ul {
-  list-style: none;
-  font-size: 1.2rem;
+.button:active {
+  box-shadow: none;
+}
+
+.todo-input {
+  display: flex;
+}
+
+.todo-input .todo-input__input {
+  margin-right: 1em;
+}
+
+.todo-input__input {
+  all: unset;
+  display: inline-block;
+  flex-grow: 1;
+  width: auto;
+  background-color: white;
+  padding: 0.5em;
+  border: 0.1em solid transparent;
+  border-radius: 0.3em;
+}
+
+.todo-input__input:focus {
+  border: 0.1em solid var(--yellow);
+}
+
+.radio-container {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 0.5em 0.25em;
+  align-items: center;
+  justify-content: center;
+}
+
+.filter {
+  padding: 2rem;
+}
+.radio-button {
+  all: unset;
+  display: inline-block;
+  flex-grow: 1;
+  width: auto;
+  background-color: white;
+  padding: 0.5em;
+  border: 0.1em solid var(--dark-blue);
+  border-radius: 50%;
+}
+
+.radio-button:checked {
+  background-color: var(--light-blue);
+}
+
+.radio-button:focus {
+  border: 0.1em solid var(--yellow);
+}
+
+.todo-list {
+  list-style-type: none;
   padding: 0;
 }
 
-ul > * {
-  margin: 1rem;
+.todo-list > * + * {
+  margin-top: 0.5rem;
 }
 
 .done {

@@ -12,40 +12,45 @@
 
 <body>
     <header>
-        <h1>Todo App</h1>
+        <h1 class="header-title">Todo App</h1>
     </header>
     <main id="app">
-        <form onsubmit="return false">
-            <input v-model="text" placeholder="Get shit done!">
-            <button @click="newTodoToData()">Add</button>
+        <form class="todo-input" onsubmit="return false">
+            <input class="todo-input__input" v-model="text" placeholder="Get shit done!">
+            <button class="todo-input__button button" @click="newTodoToData()" class="button">Add</button>
         </form>
 
-        <div class="filter">
+        <section class="filter">
             <h2>Filter & Options</h2>
 
+            <div class="radio-container">
+                <input class="radio-button" type="radio" id="filterAll" @click="filterAll()"
+                    :checked="filter === 'all'">
+                <label for="filterAll">All</label>
 
-            <input type="radio" id="filterAll" @click="filterAll()" :checked="filter === 'all'">
-            <label for="filterAll">All</label>
+                <input class="radio-button" type="radio" id="filterOpen" @click="filterOpens()"
+                    :checked="filter === 'opens'">
+                <label for="filterOpen">Open</label>
 
-            <input type="radio" id="filterOpen" @click="filterOpens()" :checked="filter === 'opens'">
-            <label for="filterOpen">Open</label>
+                <input class="radio-button" type="radio" id="filterDone" @click="filterDones()"
+                    :checked="filter === 'dones'">
+                <label for="filterDone">Done</label>
+            </div>
+        </section>
 
-            <input type="radio" id="filterDone" @click="filterDones()" :checked="filter === 'dones'">
-            <label for="filterDone">Done</label>
-        </div>
+        <button id="removeDoneTodos" @click="deleteDones()" class="button">Remove Done Todos</button>
 
-        <button id="removeDoneTodos" @click="deleteDones()">Remove Done Todos</button>
-
-        <div>
+        <section>
             <h2>Your Todos</h2>
-            <ul>
-                <li v-for="(todo ,index) in todos" :key="index" :hidden="todo.hidden">
-                    <input type="checkbox" :id="index" :checked="todo.done" @click="checkTodo">
-                    <label for="index" :class="todo.doneClass">{{todo.description}}</label>
+            <ul class="todo-list">
+                <li class="todo-item" v-for="(todo ,index) in todos" :key="index" :hidden="todo.hidden">
+                    <input class="todo-item__checkbox" type="checkbox" :id="index" :checked="todo.done"
+                        @click="checkTodo">
+                    <label class="todo-item__text" for="index" :class="todo.doneClass">{{todo.description}}</label>
                 </li>
             </ul>
 
-        </div>
+        </section>
     </main>
 
 
