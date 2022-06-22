@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todo-app-with-vue-cli</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+    <header>
+        <h1 class="header-title">Todo App</h1>
+    </header>
+    <main id="app">
+        <form class="todo-input" onsubmit="return false">
+            <input class="todo-input__input" v-model="text" placeholder="Get shit done!">
+            <button class="todo-input__button button" @click="newTodoToData()" class="button">Add</button>
+        </form>
+
+        <section class="filter">
+            <h2>Filter & Options</h2>
+
+            <div class="radio-container">
+                <input class="radio-button" type="radio" id="filterAll" @click="filterAll()"
+                    :checked="filter === 'all'">
+                <label for="filterAll">All</label>
+
+                <input class="radio-button" type="radio" id="filterOpen" @click="filterOpens()"
+                    :checked="filter === 'opens'">
+                <label for="filterOpen">Open</label>
+
+                <input class="radio-button" type="radio" id="filterDone" @click="filterDones()"
+                    :checked="filter === 'dones'">
+                <label for="filterDone">Done</label>
+            </div>
+        </section>
+
+        <button id="removeDoneTodos" @click="deleteDones()" class="button">Remove Done Todos</button>
+
+        <section>
+            <h2>Your Todos</h2>
+            <ul class="todo-list">
+                <li class="todo-item" v-for="(todo ,index) in todos" :key="index" :hidden="todo.hidden">
+                    <input class="todo-item__checkbox" type="checkbox" :id="index" :checked="todo.done"
+                        @click="checkTodo">
+                    <label class="todo-item__text" for="index" :class="todo.doneClass">{{todo.description}}</label>
+                </li>
+            </ul>
+
+        </section>
+    </main>
+
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
