@@ -1,0 +1,51 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  font-family: monospace;
+}
+body {
+  margin: 0;
+}
+header {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header > * {
+  margin: 0.5rem;
+}
+
+button {
+  cursor: pointer;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#removeDoneTodos {
+  margin: 2rem;
+}
+
+ul {
+  list-style: none;
+  font-size: 1.2rem;
+  padding: 0;
+}
+
+ul > * {
+  margin: 1rem;
+}
+
+.done {
+  text-decoration: line-through;
+}
